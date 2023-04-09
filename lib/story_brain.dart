@@ -2,8 +2,8 @@ import 'dart:ffi';
 import 'story.dart';
 
 class StoryBrain{
-  int storyNumber =0;
-  List<Story> storyData = [
+  int _storyNumber =0;
+  List<Story> _storyData = [
     Story(
         storyTitle:
         'Your car has blown a tire on a winding road in the middle of nowhere with no cell phone reception. You decide to hitchhike. A rusty pickup truck rumbles to a stop next to you. A man with a wide brimmed hat with soulless eyes opens the passenger door for you and asks: "Need a ride, boy?".',
@@ -36,37 +36,37 @@ class StoryBrain{
   ];
 
   String getStory() {
-    return storyData[storyNumber].storyTitle;
+    return _storyData[_storyNumber].storyTitle;
   }
   String getChoice1() {
-    return storyData[storyNumber].choice1;
+    return _storyData[_storyNumber].choice1;
   }
   String getChoice2() {
-    return storyData[storyNumber].choice2;
+    return _storyData[_storyNumber].choice2;
   }
 
-  void nextStory (int choiceNum) {
-    if (storyNumber== 0 && choiceNum == 1){
-      storyNumber = 2;
-    }else if (storyNumber==0 && choiceNum == 2){
-      storyNumber =1;
-    }else if (storyNumber==1 && choiceNum == 1){
-      storyNumber =2;
-    }else if (storyNumber==1 && choiceNum == 2){
-      storyNumber =3;
-    }else if (storyNumber==2 && choiceNum == 1){
-      storyNumber =5;
-    }else if (storyNumber==2 && choiceNum == 2){
-      storyNumber =4;
-    }else if (storyNumber >2 && storyNumber < 6){
+  void nextStory (int _choiceNum) {
+    if (_storyNumber== 0 && _choiceNum == 1){
+      _storyNumber = 2;
+    }else if (_storyNumber==0 && _choiceNum == 2){
+      _storyNumber =1;
+    }else if (_storyNumber==1 && _choiceNum == 1){
+      _storyNumber =2;
+    }else if (_storyNumber==1 && _choiceNum == 2){
+      _storyNumber =3;
+    }else if (_storyNumber==2 && _choiceNum == 1){
+      _storyNumber =5;
+    }else if (_storyNumber==2 && _choiceNum == 2){
+      _storyNumber =4;
+    }else if (_storyNumber >2 && _storyNumber < 6){
       restart();
     }
   }
   void restart(){
-    storyNumber =0;
+    _storyNumber =0;
   }
   bool buttonShouldBeVisible(){
-    return storyNumber == 0 || storyNumber == 1 || storyNumber == 2;
+    return _storyNumber == 0 || _storyNumber == 1 || _storyNumber == 2;
   }
 }
 
